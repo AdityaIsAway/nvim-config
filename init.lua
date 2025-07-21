@@ -283,6 +283,7 @@ require('lazy').setup({
       },
     },
   },
+  
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -881,18 +882,19 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'Mofiqul/adwaita.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    -- Lua with Lazy.nvim:
+    
+    "Mofiqul/adwaita.nvim",
+    lazy = false,
+    priority = 1000,
+    
+    -- configure and set on startup
     config = function()
-      vim.g.adwaita_darker = true -- for darker version
-      vim.g.adwaita_disable_cursorline = true -- to disable cursorline
-      vim.g.adwaita_transparent = true
-
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd 'colorscheme adwaita'
-    end,
+        vim.g.adwaita_darker = false             -- for darker version
+        vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+        vim.g.adwaita_transparent = true        -- makes the background transparent
+        vim.cmd('colorscheme adwaita')
+    end
   },
 
   -- Highlight todo, notes, etc in comments
@@ -935,6 +937,7 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
